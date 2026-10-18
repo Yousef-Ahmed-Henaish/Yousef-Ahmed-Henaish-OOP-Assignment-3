@@ -20,13 +20,3 @@ var amount = 1500m;
 EnrollmentFacade Enroll = new EnrollmentFacade(new PaymentGateway(), new SeatInventory(), new InvoiceGenerator(), new EmailService());
 
 Enroll.Enroll(studentId, courseId, amount);
-
-/*
-Enroll.Charge(studentId, amount);
-
-Enroll.ReserveSeat(courseId, studentId);
-
-var invoiceId = Enroll.CreateInvoice(studentId, amount);
-
-Enroll.SendEmail(studentId, "Enrollment confirmed", $"Invoice {invoiceId} for {courseId}");
-*/

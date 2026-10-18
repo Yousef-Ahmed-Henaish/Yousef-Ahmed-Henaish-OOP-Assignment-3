@@ -14,32 +14,12 @@ public class EnrollmentFacade
         _invoice = invoiceGenerator;
         _email = emailService;
     }
-    
+
     public void Enroll(string studentId, string courseId, decimal amount)
     {
-        Charge(studentId, amount);
-        ReserveSeat( courseId, studentId);
-        var invoiceId = CreateInvoice(studentId, amount);
-        SendEmail(studentId, "Enrollment confirmed", $"Invoice {invoiceId} for {courseId}");
-    }
-
-    public void Charge(string studentId, decimal amount)
-    {
         _payment.Charge(studentId, amount);
-    }
-
-    public void ReserveSeat(string courseId, string studentId)
-    {
         _seats.Reserve(courseId, studentId);
-    }
-
-    public void SendEmail(string studentId, string subject, string body)
-    {
-        _email.Send(studentId, subject, body);
-    }
-
-    public string CreateInvoice(string studentId, decimal amount)
-    {
-        return _invoice.Create(studentId, amount);
+        var invoiceId = _invoice.Create(studentId, amount);
+        _email.Send(studentId, "Enrollment confirmed", $"Invoice {invoiceId} for {courseId}");
     }
 }
