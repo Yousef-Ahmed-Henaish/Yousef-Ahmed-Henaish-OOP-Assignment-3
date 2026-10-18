@@ -1,5 +1,6 @@
 using RefactoringLab.Part02.Enrollment;
 using RefactoringLab.Part02.Reports;
+using RefactoringLab.Part02.Reports.Exporters;
 
 Console.WriteLine("=== Reports ===");
 var outDir = Path.Combine(Path.GetTempPath(), "refactoring-lab-part02");
