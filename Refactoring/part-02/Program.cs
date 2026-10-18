@@ -17,12 +17,16 @@ var studentId = "S100";
 var courseId = "CS201";
 var amount = 1500m;
 
-var payment = new PaymentGateway();
-var seats = new SeatInventory();
-var invoices = new InvoiceGenerator();
-var email = new EmailService();
+EnrollmentFacade Enroll = new EnrollmentFacade(new PaymentGateway(), new SeatInventory(), new InvoiceGenerator(), new EmailService());
 
-payment.Charge(studentId, amount);
-seats.Reserve(courseId, studentId);
-var invoiceId = invoices.Create(studentId, amount);
-email.Send(studentId, "Enrollment confirmed", $"Invoice {invoiceId} for {courseId}");
+Enroll.Enroll(studentId, courseId, amount);
+
+/*
+Enroll.Charge(studentId, amount);
+
+Enroll.ReserveSeat(courseId, studentId);
+
+var invoiceId = Enroll.CreateInvoice(studentId, amount);
+
+Enroll.SendEmail(studentId, "Enrollment confirmed", $"Invoice {invoiceId} for {courseId}");
+*/
