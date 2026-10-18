@@ -10,9 +10,9 @@ public class OrderProcessor
         _sender = sender;
     }
 
-    public void Process(int orderId, string customerEmail)
+    public void Process(int orderId, string to)
     {
         _orderRepo.Save(orderId, DateTime.Now);
-        _sender.Send(customerEmail, $"Order {orderId} confirmed at {DateTime.Now}");
+        _sender.Send(to, $"Order {orderId} confirmed at {DateTime.Now}");
     }
 }

@@ -9,7 +9,7 @@ public record NotificationRequest
         Urgent = urgent;
         
         /*Should not found because this is only refactoring, but it's right logically*/
-        if (sendAt > DateTime.Now)
+        if (sendAt < DateTime.Now)
             throw new ArgumentException("Date Can't be in the past !");
         else
             SendAt = sendAt;
