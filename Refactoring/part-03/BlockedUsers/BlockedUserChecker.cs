@@ -7,20 +7,18 @@ public static class BlockedUserChecker
     public static int CountBlocked(List<int> blockedIds, int[] requestIds)
     {
         var blocked = 0;
+        HashSet<int> searchIds = new HashSet<int>(blockedIds);
+
         foreach (var id in requestIds)
-        {
-            if (blockedIds.Contains(id))
+            if (searchIds.Contains(id))
                 blocked++;
-        }
+
         return blocked;
     }
 
     public static List<int> BuildBlockedIds(int count)
     {
-        var list = new List<int>(count);
-        for (var i = 0; i < count; i++)
-            list.Add(i);
-        return list;
+        return Enumerable.Range(0, count).ToList();
     }
 
     public static int[] BuildRequestIds(int count, int maxId, int seed = 42)

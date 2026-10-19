@@ -4,11 +4,15 @@
 
 ## BlockedUsers
 
-- Time complexity before:
-- Time (ms) before:
+- Time complexity before: O of N*M
+- Time (ms) before: 46ms
+
 - What did you change?
-- Time complexity after:
-- Time (ms) after:
+- used hashset instead of list.
+
+- Time complexity after: O of N
+
+- Time (ms) after: 2ms
 
 ---
 
