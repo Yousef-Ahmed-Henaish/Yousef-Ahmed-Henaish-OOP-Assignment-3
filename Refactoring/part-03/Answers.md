@@ -19,4 +19,7 @@
 ## Students
 
 - What was the problem?
+- I need to process only 3 students, but I'm forced to wait milion student to end.
+
 - What did you change?
+- used yield return to return and process students one by one.
