@@ -2,6 +2,7 @@ using System.Diagnostics;
 
 namespace RefactoringLab.Part03.BlockedUsers;
 
+
 public static class BlockedUserChecker
 {
     public static int CountBlocked(List<int> blockedIds, int[] requestIds)
