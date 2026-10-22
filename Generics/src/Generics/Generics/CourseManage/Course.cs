@@ -1,6 +1,6 @@
 ﻿namespace Generics.CourseManage;
 
-internal class Course
+internal class Course : IHasId
 {
     public int Id {  get; set; }
     public string Title { get; set; }

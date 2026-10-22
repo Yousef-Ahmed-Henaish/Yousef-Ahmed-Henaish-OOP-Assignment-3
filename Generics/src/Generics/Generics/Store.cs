@@ -6,41 +6,37 @@ namespace Generics;
 
 internal class Store<T> where T : class, IHasId
 {
-    private static readonly List<T> _items = new List<T>();
+    private static readonly Dictionary<int, T> _items = new Dictionary<int, T>();
 
-    public static void Add(T t)
-        => _items.Add(t);
-
-
-    public static T GetById(int id)
+    public void Add(int id, T item)
     {
-        foreach (var T in _items)
+        if (_items.ContainsKey(id))
+            throw new ArgumentException("Doublicated Id: Id is exsist !");
+        else
+            _items.Add(id, item);
+    }
+        
+
+
+    public T GetById(int id)
+    {   
+        foreach (var item in _items)
         {
-            if (id == T.Id)
-                return T;
+            if (id == item.Key)
+                return item.Value;
         }
 
         return null;
     }
 
-    public static List<T> GetAll()
+    public IReadOnlyDictionary<int, T> GetAll()
     {
         return _items;
     }
 
-    public static void Remove(int id)
+    public void Remove(int id)
     {
-        int index = _items.FindIndex(item => item.Id == id);
-        string message = string.Empty;
-
-        if (index == -1)
-        {
-            Console.WriteLine("Item Not found");
-        }   
-        else
-        {
-            _items.RemoveAt(index);
-            Console.WriteLine($"Iteml in Index {index} was Deleted.");
-        }
+        if (!_items.Remove(id))
+            throw new ArgumentException($"Item {id} is not found.");
     }
 }
