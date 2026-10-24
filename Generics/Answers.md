@@ -4,3 +4,6 @@
 ### step 3:  GetById will not compile
 - will not compile because the compiler cannot sure that T have Id inside it, it can be int, ...
 - the fix is set where keyword, builing interface have Id and any T should implement this interface.
+
+### Leave new Store<string>() as a commented -out line marked “must NOT compile”, and explain why in Answers.md.
+- int this case because string cannot implement IHasId, and we can avoid it be where: new() also .

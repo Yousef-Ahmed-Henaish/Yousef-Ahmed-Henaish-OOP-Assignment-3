@@ -1,6 +1,6 @@
 ﻿namespace Generics;
 
-internal interface IHasId
+public interface IHasId
 {
     int Id { get; set; }
 }
