@@ -14,9 +14,12 @@ public static class BlockedUserChecker
             if (searchIds.Contains(id))
                 blocked++;
 
+        int a = 5;
+        a.GetHashCode();)
+
         return blocked;
     }
-
+    
     public static List<int> BuildBlockedIds(int count)
     {
         return Enumerable.Range(0, count).ToList();
@@ -30,7 +33,7 @@ public static class BlockedUserChecker
             ids[i] = rnd.Next(maxId);
         return ids;
     }
-
+    
     public static long MeasureMs(List<int> blockedIds, int[] requestIds, out int found)
     {
         var sw = Stopwatch.StartNew();
